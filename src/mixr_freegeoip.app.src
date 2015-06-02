@@ -1,0 +1,12 @@
+{application, mixr_freegeoip,
+ [
+  {description, ""},
+  {vsn, "1.0.0"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  inets
+                 ]},
+  {env, []}
+ ]}.
