@@ -1,34 +1,9 @@
-REBAR = ./rebar
-RM_RF = rm -rf
+PROJECT = mixr_freegeoip
 
-.PHONY: compile get-deps test
+DEPS = lager eutils 
 
-all: compile
+dep_lager = git https://github.com/basho/lager.git master
+dep_eutils = git https://github.com/emedia-project/eutils.git master
 
-compile: get-deps
-	@$(REBAR) compile
-
-get-deps:
-	@$(REBAR) get-deps
-	@$(REBAR) check-deps
-
-clean:
-	@$(REBAR) clean
-	rm -f erl_crash.dump
-
-realclean: clean
-	@$(REBAR) delete-deps
-	@$(RM_RF) ebin
-	@$(RM_RF) deps
-
-doc: compile
-	@rm -f documentation.md
-	@rm -rf doc
-	@$(REBAR) doc
-
-test: compile
-	@$(REBAR) skip_deps=true eunit
-
-dev: compile
-	@erl -pa ebin include deps/*/ebin deps/*/include
+include erlang.mk
 

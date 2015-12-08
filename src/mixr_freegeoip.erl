@@ -1,4 +1,5 @@
 -module(mixr_freegeoip).
+-compile([{parse_transform, lager_transform}]).
 
 -export([
          start/1,
